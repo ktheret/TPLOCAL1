@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using System.IO;
 using TPLOCAL1.Models;
+
 
 //Subject is find at the root of the project and the logo in the wwwroot/ressources folders of the solution
 //--------------------------------------------------------------------------------------
@@ -23,7 +25,11 @@ namespace TPLOCAL1.Controllers
                 {
                     case "OpinionList":
                         //TODO : code reading of the xml files provide
-                        return View(id);
+                        OpinionList opinion = new OpinionList();
+                        string directory = Directory.GetCurrentDirectory();
+                        string file = directory + @"\XlmFile\DataAvis.xml";
+                        List<Opinion> opinionList = opinion.GetAvis(file);
+                        return View(id, opinionList);
                     case "Form":
                         //TODO : call the Form view with data model empty
                         return View(id);
@@ -37,12 +43,17 @@ namespace TPLOCAL1.Controllers
 
         //methode to send datas from form to validation page
         [HttpPost]
-        public ActionResult ValidationFormulaire(/*model*/)
+        public ActionResult ValidationFormulaire([Bind("LastName, FirstName, Zipcode")]FormModel formModel)
         {
             //TODO : test if model's fields are set
             //if not, display an error message and stay on the form page
             //else, call ValidationForm with the datas set by the user
-            return null;
+            if(formModel.Zipcode == null)
+            {
+                ModelState.AddModelError("", "Format du ZipCode non valide");
+                return RedirectToAction("Index/Form");
+            }
+            return View(formModel);
 
         }
     }
