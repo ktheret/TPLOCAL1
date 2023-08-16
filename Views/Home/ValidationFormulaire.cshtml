@@ -13,102 +13,84 @@
 <body>
     <header>
         <img src="~/resources/GroupeHN.png" class="image" alt="GroupeHN" />
-        <h1>Welcome to TP HN</h1>
+        <h1>Page de validation</h1>
     </header>
 
     <main>
         <nav>
             <ul>
                 <li><a href="/Home/Index/">Accueil</a></li>
-                <li><a href="#">Liste des avis</a></li>
+                <li><a href="/Home/Index/OpinionList">Liste des avis</a></li>
             </ul>
         </nav>
 
-        <section>
             <p>
                 Votre formulaire a bien été pris en compte
-                @Html.DisplayFor(modelItem => Model.LastName)
             </p>
             <section>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Informations personelles</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Nom</td>
-                                <td>@Html.DisplayFor(modelItem => Model.LastName)</td>
-                            </tr>
-                            <tr>
-                                
-                                <td>Prénom</td>
-                                <td>@Html.DisplayFor(modelItem => Model.FirstName)</td>
-                            </tr>
-                            <tr>
-                                <td>Sexe</td>
-                                <td>@Html.DisplayFor(modelItem => Model.Sexe)</td>
-                            </tr>
-                            <tr>
-                                <td>Adresse</td>
-                                <td>@Html.DisplayFor(modelItem => Model.Address)</td>
-                            </tr>
-                            <tr>
-                                <td>Code Postal</td>
-                                <td>@Html.DisplayFor(modelItem => Model.Zipcode)</td>
-                            </tr>
-                            <tr>
-                                <td>Ville</td>
-                                <td>@Html.DisplayFor(modelItem => Model.Town)</td>
-                            </tr>
-                            <tr>
-                                <td>Adresse Mail</td>
-                                <td>@Html.DisplayFor(modelItem => Model.Email)</td>
-                            </tr>
+                <table>
+                    <caption>Informations personnelles</caption>
+                    <tbody>
+                        <tr>
+                            <td>@Html.DisplayNameFor(modelItem => Model.LastName)</td>
+                            <td>@Html.DisplayFor(modelItem => Model.LastName)</td>
+                        </tr>
+                        <tr>
+                            <td>@Html.DisplayNameFor(modelItem => Model.FirstName)</td>
+                            <td>@Html.DisplayFor(modelItem => Model.FirstName)</td>
+                        </tr>
+                        <tr>
+                            <td>@Html.DisplayNameFor(modelItem => Model.Sexe)</td>
+                            <td>@Html.DisplayFor(modelItem => Model.Sexe)</td>
+                        </tr>
+                        <tr>
+                            <td>@Html.DisplayNameFor(modelItem => Model.Address)</td>
+                            <td>@Html.DisplayFor(modelItem => Model.Address)</td>
+                        </tr>
+                        <tr>
+                            <td>@Html.DisplayNameFor(modelItem => Model.Zipcode)</td>
+                            <td>@Html.DisplayFor(modelItem => Model.Zipcode)</td>
+                        </tr>
+                        <tr>
+                            <td>@Html.DisplayNameFor(modelItem => Model.Town)</td>
+                            <td>@Html.DisplayFor(modelItem => Model.Town)</td>
+                        </tr>
+                        <tr>
+                            <td>@Html.DisplayNameFor(modelItem => Model.Email)</td>
+                            <td>@Html.DisplayFor(modelItem => Model.Email)</td>
+                        </tr>
 
-                        </tbody>
-                    </table>
+                    </tbody>
+                </table>
 
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Informations formation suivie</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Date de début de formation</td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => Model.StartDate)</td>                       
-                            </tr>
-                            <tr>
-                                <td>Formation suivie</td>
-                                <td>@Html.DisplayFor(modelItem => Model.TrainingType)</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <table>
+                    <caption>Informations formation suivie</caption>
+                    <tbody>
+                        <tr>
+                            <td>@Html.DisplayNameFor(modelItem => Model.StartDate)</td>
+                            <td>@Html.DisplayFor(modelItem => Model.StartDate)</td>                       
+                        </tr>
+                        <tr>
+                            <td>@Html.DisplayNameFor(modelItem => Model.TrainingType)</td>
+                            <td>@Html.DisplayFor(modelItem => Model.TrainingType)</td>
+                        </tr>
+                    </tbody>
+                </table>
 
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Avis sur la formations</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Formation Cobol</td>
-                                <td>@Html.DisplayFor(modelItem => Model.CobolTraining)</td>
-                            </tr>
-                            <tr>
-                                <td>Formation C#</td>
-                                <td>@Html.DisplayFor(modelItem => Model.CSTraining)</td>
-                            </tr>
-                        </tbody>
-                    </table>
-            </section>
+                <table>
+                    <caption>Avis sur la formation</caption>
+                    <tbody>
+                        <tr>
+                            <td>@Html.DisplayNameFor(modelItem => Model.CobolTraining)</td>
+                            <td>@Html.DisplayFor(modelItem => Model.CobolTraining)</td>
+                        </tr>
+                        <tr>
+                            <td>@Html.DisplayNameFor(modelItem => Model.CSTraining)</td>
+                            <td>@Html.DisplayFor(modelItem => Model.CSTraining)</td>
+                        </tr>
+                    </tbody>
+                </table>
         </section>
     </main>
-
 </body>
 </html>

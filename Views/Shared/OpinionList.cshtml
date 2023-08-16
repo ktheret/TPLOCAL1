@@ -1,5 +1,4 @@
-﻿
-@model IEnumerable<TPLOCAL1.Models.Opinion>;
+﻿@model IEnumerable<TPLOCAL1.Models.Opinion>;
 
 <!DOCTYPE html>
 <html lang="en">
@@ -27,10 +26,8 @@
 
         <section>
             <table>
+                <caption>Liste</caption>
                 <thead>
-                    <tr>
-                        <th>Liste</th>
-                    </tr>
                     <tr>
                         <td>Nom</td>
                         <td>Prénom</td>
@@ -49,14 +46,11 @@
                                 @Html.DisplayFor(modelItem => item.LastName)
                             </td>
                    
-                                @if(item.OpinionGiven == "O") {
-                                    <td class="given">Oui</td>
-                                } else  {
-                                    <td class="not-given">Non</td>
-                                }
-                                @Html.DisplayFor(modelItem => item.LastName)
-                            
-
+                            @if(item.OpinionGiven == "O") {
+                                <td class="given">Oui</td>
+                            } else  {
+                                <td class="not-given">Non</td>
+                            }                          
                         </tr>
                     }
                 </tbody>

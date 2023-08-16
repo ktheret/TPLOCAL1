@@ -34,12 +34,17 @@ section{
     margin-left: 170px;
 }
 
-tbody, td{
+table{
+    margin-bottom: 10px;
+    border: 1px solid black;
+}
+
+td{
     border: 1px solid black;
     padding: 5px;
 }
 
-.given{
+.given {
     background-color: forestgreen;
 }
 

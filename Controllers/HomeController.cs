@@ -24,11 +24,11 @@ namespace TPLOCAL1.Controllers
                 switch (id)
                 {
                     case "OpinionList":
-                        //TODO : code reading of the xml files provide
-                        OpinionList opinion = new OpinionList();
+                        // Get path to the XML File to get Opinion
                         string directory = Directory.GetCurrentDirectory();
-                        string file = directory + @"\XlmFile\DataAvis.xml";
-                        List<Opinion> opinionList = opinion.GetAvis(file);
+                        string filePath = directory + @"\XlmFile\DataAvis.xml";
+                        OpinionList opinion = new OpinionList();
+                        List<Opinion> opinionList = opinion.GetAvis(filePath);
                         return View(id, opinionList);
                     case "Form":
                         //TODO : call the Form view with data model empty
@@ -43,18 +43,20 @@ namespace TPLOCAL1.Controllers
 
         //methode to send datas from form to validation page
         [HttpPost]
-        public ActionResult ValidationFormulaire([Bind("LastName, FirstName, Zipcode")]FormModel formModel)
+        public ActionResult ValidationFormulaire(FormModel formModel)
         {
+            Console.WriteLine(formModel.StartDate);
             //TODO : test if model's fields are set
             //if not, display an error message and stay on the form page
             //else, call ValidationForm with the datas set by the user
-            if(formModel.Zipcode == null)
+            if (!ModelState.IsValid)
             {
-                ModelState.AddModelError("", "Format du ZipCode non valide");
-                return RedirectToAction("Index/Form");
-            }
-            return View(formModel);
+                return View("Form", formModel);
 
+            }
+            return View("ValidationFormulaire", formModel);
         }
+
+
     }
 }

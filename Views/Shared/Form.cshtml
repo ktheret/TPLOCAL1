@@ -1,5 +1,6 @@
-﻿@model TPLOCAL1.Models.FormModel;
-@Html.ValidationSummary(false,"")
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model TPLOCAL1.Models.FormModel
+@Html.ValidationSummary(false, "")
 
 <!DOCTYPE html>
 <html lang="en">
@@ -21,77 +22,72 @@
         <nav>
             <ul>
                 <li><a href="/Home/Index">Accueil</a></li>
-                <li><a href="#">Liste des avis</a></li>
+                <li><a href="/Home/Index/OpinionList">Liste des avis</a></li>
             </ul>
         </nav>
 
         <section>
-            <form action="/Home/ValidationFormulaire" method="post">
+            <form asp-controller="Home" asp-action="ValidationFormulaire" method="post">
                 <table>
-                    <thead>
-                        <tr>
-                            <th>Informations personelles</th>
-                        </tr>
-                    </thead>
+                    <caption>Informations personelles</caption>
                     <tbody>
                         <tr> 
-                            <td> <label for="LastName">Nom</label> </td>
-                            <td> <input type="text" name="LastName" id="LastName"/> </td>
+                            <td><label asp-for="LastName"></label> </td>                   
+                            <td><input asp-for="LastName"/></td>
+
                         </tr>
                         <tr>
-                            <td> <label for="FirstName">Prénom</label> </td>
-                            <td> <input type="text" name="FirstName" id="FirstName" /></td>
+                            <td><label asp-for="FirstName"></label> </td>
+                            <td><input asp-for="FirstName" /></td>
                         </tr>
                         <tr>
-                            <td><label for="Sexe">Sexe</label></td>
+                            <td><label asp-for="Sexe"></label></td>
                             <td> 
-                                <select name="Sexe">
-                                    <option value="">Select gender</option>
-                                    <option value="Man">Man</option>
-                                    <option value="Woman">Woman</option>
-                                    <option value="Other">Other</option>
+     
+
+                                <select asp-for="Sexe">
+                                    <option value="">Selectionner un genre</option>
+                                    <option value="Homme">Homme</option>
+                                    <option value="Femme">Femme</option>
+                                    <option value="Autre">Autre</option>
                                 </select>
                             </td>
                         </tr>
-                        <tr> 
-                            <td><label for="Address">Adresse</label></td>
-                            <td><input type="text" name="Address" id="Address" /></td>
+                        <tr>
+                            <td><label asp-for="Address"></label> </td>
+                            <td><input asp-for="Address" /></td>
                         </tr>
                         <tr>
-                            <td><label for="Zipcode">Code Postal</label></td>
-                            <td><input type="text" name="Zipcode" id="Zipcode" /></td>
+                            <td><label asp-for="Zipcode"></label> </td>
+                            <td><input asp-for="Zipcode" /></td>
                         </tr>
                         <tr> 
-                            <td><label for="Town">Ville</label>e</td>
-                            <td><input type="text" name="Town" id="Town" /></td>
+                            <td><label asp-for="Town"></label> </td>
+                            <td><input asp-for="Town" /></td>
                         </tr>
                         <tr>
-                            <td><label for="Email">Addresse mail</label></td>
-                            <td><input type="email" name="Email" id="Email" /></td>
+                            <td><label asp-for="Email"></label> </td>
+                            <td><input asp-for="Email" /></td>
                         </tr>
 
                     </tbody>
                 </table>
 
                 <table>
-                    <thead>
-                        <tr>
-                            <th>Informations formation suivie</th>
-                        </tr>
-                    </thead>
+                    <caption>Informations formation suivie</caption>
                     <tbody>
                         <tr>
-                            <td><label for="StartDate">Start Date Training</label></td>
-                            <td> <input type="date" max="2021-01-01" name="StartDate"/></td>
+                            <td><label asp-for="StartDate"></label> </td>
+                            <td><input asp-for="StartDate" max="2021-01-01" value="2020-01-01"/></td>
                         </tr>
                         <tr>
-                            <td><label for="TrainingType">Type of training</label></td>
+                            <td><label asp-for="TrainingType"></label> </td>
                             <td>
                                 <select name="TrainingType">
-                                    <option value="">Select course</option>
-                                    <option value="Cobol">Cobol Training</option>
-                                    <option value="Object">Object Training</option>
-                                    <option value="DualSkills">Dual Skills Training</option>
+                                    <option value="">Selectionner une formation</option>
+                                    <option value="Formation Cobol">Formation Cobol</option>
+                                    <option value="Formation Objet">Formation Objet</option>
+                                    <option value="Formation Dual Skills">Formation Dual Skills</option>
                                 </select>
                             </td>
                         </tr>
@@ -99,19 +95,15 @@
                 </table>
 
                 <table>
-                    <thead>
-                        <tr>
-                            <th>Avis sur la formations</th>
-                        </tr>
-                    </thead>
+                    <caption>Avis sur la formation</caption>
                     <tbody>
                         <tr>
-                            <td><label for="CobolTraining">Cobol Training</label></td>
-                            <td> <input type="text" name="CobolTraining" /></td>
+                            <td><label asp-for="CobolTraining"></label> </td>
+                            <td><input asp-for="CobolTraining" /></td>
                         </tr>
                         <tr>
-                            <td><label for="CSTraining">C# Training</label></td>
-                            <td> <input type="text" name="CSTraining" /></td>
+                            <td><label asp-for="CSTraining"></label> </td>
+                            <td><input asp-for="CSTraining" /></td>
                         </tr>
                     </tbody>
                 </table>
