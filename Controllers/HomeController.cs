@@ -64,11 +64,11 @@ namespace TPLOCAL1.Controllers
             }
             else if (formModel.TrainingType.Equals(FormModel.Trainings.ElementAt(1)) && formModel.CobolTraining == null)
             {
-                ModelState.AddModelError("CobolTraining", "Vous avez choisi la formation Cobol : Donnez un avis pour cette formation");
+                ModelState.AddModelError("CobolTraining", "Donnez un avis pour la formation Cobol");
             }
             else if (formModel.TrainingType.Equals(FormModel.Trainings.ElementAt(2)) && formModel.CSTraining == null)
             {
-                ModelState.AddModelError("CSTraining", "Vous avez choisi la formation Cobol : Donnez un avis pour cette formation");
+                ModelState.AddModelError("CSTraining", "Donnez un avis pour la formation C#");
             }
             else if (formModel.TrainingType.Equals(FormModel.Trainings.ElementAt(3)) && (formModel.CobolTraining == null || formModel.CSTraining == null))
             {
