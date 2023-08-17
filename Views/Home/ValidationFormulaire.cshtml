@@ -1,96 +1,81 @@
-﻿@model TPLOCAL1.Models.FormModel;
+﻿@{
+    ViewData["Title"] = "Page de validation";
+    ViewData["MainTitle"] = "Page de validation";
+}
+@model TPLOCAL1.Models.FormModel;
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page de validation</title>
+    
+<nav>
+    <ul>
+        <li><a href="/Home">Accueil</a></li>
+        <li><a href="/Home/Index/OpinionList">Liste des avis</a></li>
+    </ul>
+</nav>
 
-    <link rel="stylesheet" href="~/resources/Index.css" />
-</head>
-<body>
-    <header>
-        <img src="~/resources/GroupeHN.png" class="image" alt="GroupeHN" />
-        <h1>Page de validation</h1>
-    </header>
+<section>
+    <p>
+        Votre formulaire a bien été pris en compte
+    </p>
+    <table>
+        <caption>Informations personnelles</caption>
+        <tbody>
+            <tr>
+                <td>@Html.DisplayNameFor(modelItem => Model.LastName)</td>
+                <td>@Html.DisplayFor(modelItem => Model.LastName)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(modelItem => Model.FirstName)</td>
+                <td>@Html.DisplayFor(modelItem => Model.FirstName)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(modelItem => Model.Sexe)</td>
+                <td>@Html.DisplayFor(modelItem => Model.Sexe)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(modelItem => Model.Address)</td>
+                <td>@Html.DisplayFor(modelItem => Model.Address)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(modelItem => Model.Zipcode)</td>
+                <td>@Html.DisplayFor(modelItem => Model.Zipcode)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(modelItem => Model.Town)</td>
+                <td>@Html.DisplayFor(modelItem => Model.Town)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(modelItem => Model.Email)</td>
+                <td>@Html.DisplayFor(modelItem => Model.Email)</td>
+            </tr>
 
-    <main>
-        <nav>
-            <ul>
-                <li><a href="/Home/Index/">Accueil</a></li>
-                <li><a href="/Home/Index/OpinionList">Liste des avis</a></li>
-            </ul>
-        </nav>
+        </tbody>
+    </table>
 
-            <p>
-                Votre formulaire a bien été pris en compte
-            </p>
-            <section>
-                <table>
-                    <caption>Informations personnelles</caption>
-                    <tbody>
-                        <tr>
-                            <td>@Html.DisplayNameFor(modelItem => Model.LastName)</td>
-                            <td>@Html.DisplayFor(modelItem => Model.LastName)</td>
-                        </tr>
-                        <tr>
-                            <td>@Html.DisplayNameFor(modelItem => Model.FirstName)</td>
-                            <td>@Html.DisplayFor(modelItem => Model.FirstName)</td>
-                        </tr>
-                        <tr>
-                            <td>@Html.DisplayNameFor(modelItem => Model.Sexe)</td>
-                            <td>@Html.DisplayFor(modelItem => Model.Sexe)</td>
-                        </tr>
-                        <tr>
-                            <td>@Html.DisplayNameFor(modelItem => Model.Address)</td>
-                            <td>@Html.DisplayFor(modelItem => Model.Address)</td>
-                        </tr>
-                        <tr>
-                            <td>@Html.DisplayNameFor(modelItem => Model.Zipcode)</td>
-                            <td>@Html.DisplayFor(modelItem => Model.Zipcode)</td>
-                        </tr>
-                        <tr>
-                            <td>@Html.DisplayNameFor(modelItem => Model.Town)</td>
-                            <td>@Html.DisplayFor(modelItem => Model.Town)</td>
-                        </tr>
-                        <tr>
-                            <td>@Html.DisplayNameFor(modelItem => Model.Email)</td>
-                            <td>@Html.DisplayFor(modelItem => Model.Email)</td>
-                        </tr>
+    <table>
+        <caption>Informations formation suivie</caption>
+        <tbody>
+            <tr>
+                <td>@Html.DisplayNameFor(modelItem => Model.StartDate)</td>
+                <td>@Html.DisplayFor(modelItem => Model.StartDate)</td>                       
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(modelItem => Model.TrainingType)</td>
+                <td>@Html.DisplayFor(modelItem => Model.TrainingType)</td>
+            </tr>
+        </tbody>
+    </table>
 
-                    </tbody>
-                </table>
-
-                <table>
-                    <caption>Informations formation suivie</caption>
-                    <tbody>
-                        <tr>
-                            <td>@Html.DisplayNameFor(modelItem => Model.StartDate)</td>
-                            <td>@Html.DisplayFor(modelItem => Model.StartDate)</td>                       
-                        </tr>
-                        <tr>
-                            <td>@Html.DisplayNameFor(modelItem => Model.TrainingType)</td>
-                            <td>@Html.DisplayFor(modelItem => Model.TrainingType)</td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <table>
-                    <caption>Avis sur la formation</caption>
-                    <tbody>
-                        <tr>
-                            <td>@Html.DisplayNameFor(modelItem => Model.CobolTraining)</td>
-                            <td>@Html.DisplayFor(modelItem => Model.CobolTraining)</td>
-                        </tr>
-                        <tr>
-                            <td>@Html.DisplayNameFor(modelItem => Model.CSTraining)</td>
-                            <td>@Html.DisplayFor(modelItem => Model.CSTraining)</td>
-                        </tr>
-                    </tbody>
-                </table>
-        </section>
-    </main>
-</body>
-</html>
+    <table>
+        <caption>Avis sur la formation</caption>
+        <tbody>
+            <tr>
+                <td>@Html.DisplayNameFor(modelItem => Model.CobolTraining)</td>
+                <td>@Html.DisplayFor(modelItem => Model.CobolTraining)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(modelItem => Model.CSTraining)</td>
+                <td>@Html.DisplayFor(modelItem => Model.CSTraining)</td>
+            </tr>
+        </tbody>
+    </table>
+</section>

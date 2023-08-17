@@ -1,116 +1,89 @@
-﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+﻿@{
+    ViewData["Title"] = "Formulaire";
+    ViewData["MainTitle"] = "Formulaire TP HN Avis";
+}
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @model TPLOCAL1.Models.FormModel
 @Html.ValidationSummary(false, "")
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulaire</title>
+<nav>
+    <ul>
+        <li><a href="/Home">Accueil</a></li>
+        <li><a href="/Home/Index/OpinionList">Liste des avis</a></li>
+    </ul>
+</nav>
 
-    <link rel="stylesheet" href="~/resources/Index.css" />
-</head>
-<body>
-    <header>
-        <img src="~/resources/GroupeHN.png" class="image" alt="GroupeHN" />
-        <h1>Formulaire TP HN Avis</h1>
-    </header>
+<section>
+    <form asp-controller="Home" asp-action="ValidationFormulaire" method="post">
+        <table>
+            <caption>Informations personelles</caption>
+            <tbody>
+                <tr> 
+                    <td><label asp-for="LastName"></label> </td>                   
+                    <td><input asp-for="LastName"/></td>
 
-    <main>
-        <nav>
-            <ul>
-                <li><a href="/Home/Index">Accueil</a></li>
-                <li><a href="/Home/Index/OpinionList">Liste des avis</a></li>
-            </ul>
-        </nav>
+                </tr>
+                <tr>
+                    <td><label asp-for="FirstName"></label> </td>
+                    <td><input asp-for="FirstName" /></td>
+                </tr>
+                <tr>
+                    <td><label asp-for="Sexe"></label></td>
+                    <td>
+                        <select asp-for="Sexe" asp-items="@new SelectList(TPLOCAL1.Models.FormModel.Sexes)">
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label asp-for="Address"></label> </td>
+                    <td><input asp-for="Address" /></td>
+                </tr>
+                <tr>
+                    <td><label asp-for="Zipcode"></label> </td>
+                    <td><input asp-for="Zipcode" /></td>
+                </tr>
+                <tr> 
+                    <td><label asp-for="Town"></label> </td>
+                    <td><input asp-for="Town" /></td>
+                </tr>
+                <tr>
+                    <td><label asp-for="Email"></label> </td>
+                    <td><input asp-for="Email" /></td>
+                </tr>
 
-        <section>
-            <form asp-controller="Home" asp-action="ValidationFormulaire" method="post">
-                <table>
-                    <caption>Informations personelles</caption>
-                    <tbody>
-                        <tr> 
-                            <td><label asp-for="LastName"></label> </td>                   
-                            <td><input asp-for="LastName"/></td>
+            </tbody>
+        </table>
 
-                        </tr>
-                        <tr>
-                            <td><label asp-for="FirstName"></label> </td>
-                            <td><input asp-for="FirstName" /></td>
-                        </tr>
-                        <tr>
-                            <td><label asp-for="Sexe"></label></td>
-                            <td> 
-     
+        <table>
+            <caption>Informations formation suivie</caption>
+            <tbody>
+                <tr>
+                    <td><label asp-for="StartDate"></label> </td>
+                    <td><input asp-for="StartDate" max="2021-01-01" value="2020-01-01" required/></td>
+                </tr>
+                <tr>
+                    <td><label asp-for="TrainingType"></label> </td>
+                    <td>
+                        <select asp-for="TrainingType" asp-items="@new SelectList(TPLOCAL1.Models.FormModel.Trainings)">
+                        </select>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
 
-                                <select asp-for="Sexe">
-                                    <option value="">Selectionner un genre</option>
-                                    <option value="Homme">Homme</option>
-                                    <option value="Femme">Femme</option>
-                                    <option value="Autre">Autre</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><label asp-for="Address"></label> </td>
-                            <td><input asp-for="Address" /></td>
-                        </tr>
-                        <tr>
-                            <td><label asp-for="Zipcode"></label> </td>
-                            <td><input asp-for="Zipcode" /></td>
-                        </tr>
-                        <tr> 
-                            <td><label asp-for="Town"></label> </td>
-                            <td><input asp-for="Town" /></td>
-                        </tr>
-                        <tr>
-                            <td><label asp-for="Email"></label> </td>
-                            <td><input asp-for="Email" /></td>
-                        </tr>
-
-                    </tbody>
-                </table>
-
-                <table>
-                    <caption>Informations formation suivie</caption>
-                    <tbody>
-                        <tr>
-                            <td><label asp-for="StartDate"></label> </td>
-                            <td><input asp-for="StartDate" max="2021-01-01" value="2020-01-01"/></td>
-                        </tr>
-                        <tr>
-                            <td><label asp-for="TrainingType"></label> </td>
-                            <td>
-                                <select name="TrainingType">
-                                    <option value="">Selectionner une formation</option>
-                                    <option value="Formation Cobol">Formation Cobol</option>
-                                    <option value="Formation Objet">Formation Objet</option>
-                                    <option value="Formation Dual Skills">Formation Dual Skills</option>
-                                </select>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <table>
-                    <caption>Avis sur la formation</caption>
-                    <tbody>
-                        <tr>
-                            <td><label asp-for="CobolTraining"></label> </td>
-                            <td><input asp-for="CobolTraining" /></td>
-                        </tr>
-                        <tr>
-                            <td><label asp-for="CSTraining"></label> </td>
-                            <td><input asp-for="CSTraining" /></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <input type="submit" value="Valider"/>
-            </form>
-        </section>
-    </main>
-
-</body>
-</html>
+        <table>
+            <caption>Avis sur la formation</caption>
+            <tbody>
+                <tr>
+                    <td><label asp-for="CobolTraining"></label> </td>
+                    <td><input asp-for="CobolTraining" /></td>
+                </tr>
+                <tr>
+                    <td><label asp-for="CSTraining"></label> </td>
+                    <td><input asp-for="CSTraining" /></td>
+                </tr>
+            </tbody>
+        </table>
+        <input type="submit" value="Valider"/>
+    </form>
+</section>

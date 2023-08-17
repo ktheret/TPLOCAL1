@@ -1,33 +1,17 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HN - TP LOCAL</title>
+﻿@{
+    ViewData["Title"] = "HN - TP LOCAL";
+    ViewData["MainTitle"] = "Bienvenue dans le TP HN";
+}
 
-    <link rel="stylesheet" href="~/resources/Index.css"/>
-</head>
-<body>
-    <header>
-        <img src="~/resources/GroupeHN.png" class="image" alt="GroupeHN"/>
-        <h1>Bienvenue dans le TP HN</h1>
-    </header>
+<nav>
+    <ul>
+        <li><a href="/Home/Index/Form">Remplir le formulaire</a></li>
+        <li><a href="/Home/Index/OpinionList">Liste des avis</a></li>
+    </ul>
+</nav>
 
-    <main>
-        <nav>
-            <ul>
-                <li><a href="/Home/Index/Form">Remplir le formulaire</a></li>
-                <li><a href="/Home/Index/OpinionList">Liste des avis</a></li>
-            </ul>
-        </nav>
-
-        <section>
-            <p>
-                <a href="/Home/Index/Form">Remplir le formulaire</a>
-            </p>
-        </section>
-    </main>
-
-</body>
-</html>
+<section>
+    <p>
+        <a href="/Home/Index/Form">Remplir le formulaire</a>
+    </p>
+</section>

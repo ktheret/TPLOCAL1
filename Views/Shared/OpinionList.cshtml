@@ -1,62 +1,45 @@
-﻿@model IEnumerable<TPLOCAL1.Models.Opinion>;
+﻿@{
+    ViewData["Title"] = "Liste des avis";
+    ViewData["MainTitle"] = "Liste des avis";
+}
+@model IEnumerable<TPLOCAL1.Models.Opinion>;
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liste des avis</title>
+<nav>
+    <ul>
+        <li><a href="/Home">Accueil</a></li>
+        <li><a href="/Home/Index/Form">Remplir le formulaire</a></li>
+    </ul>
+</nav>
 
-    <link rel="stylesheet" href="~/resources/Index.css" />
-</head>
-<body>
-    <header>
-        <img src="~/resources/GroupeHN.png" class="image" alt="GroupeHN" />
-        <h1>Liste des avis</h1>
-    </header>
-
-    <main>
-        <nav>
-            <ul>
-                <li><a href="/Home/Index/">Accueil</a></li>
-                <li><a href="/Home/Index/Form">Remplir le formulaire</a></li>
-            </ul>
-        </nav>
-
-        <section>
-            <table>
-                <caption>Liste</caption>
-                <thead>
-                    <tr>
-                        <td>Nom</td>
-                        <td>Prénom</td>
-                        <td>Avis</td>
-                    </tr>
-                </thead>
-                <tbody>
+<section>
+    <table>
+        <caption>Liste</caption>
+        <thead>
+            <tr>
+                <td>Nom</td>
+                <td>Prénom</td>
+                <td>Avis</td>
+            </tr>
+        </thead>
+        <tbody>
          
-                    @foreach(var item in Model)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.FirstName)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.LastName)
-                            </td>
+            @foreach(var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
                    
-                            @if(item.OpinionGiven == "O") {
-                                <td class="given">Oui</td>
-                            } else  {
-                                <td class="not-given">Non</td>
-                            }                          
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        </section>
-    </main>
-
-</body>
-</html>
+                    @if(item.OpinionGiven == "O") {
+                        <td class="given">Oui</td>
+                    } else  {
+                        <td class="not-given">Non</td>
+                    }                          
+                </tr>
+            }
+        </tbody>
+    </table>
+</section>

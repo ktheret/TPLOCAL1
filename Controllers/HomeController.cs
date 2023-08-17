@@ -32,6 +32,7 @@ namespace TPLOCAL1.Controllers
                         return View(id, opinionList);
                     case "Form":
                         //TODO : call the Form view with data model empty
+                        FormModel formModel = new FormModel();
                         return View(id);
                     default:
                         //retourn to the Index view (see routing in Program.cs)
@@ -45,18 +46,45 @@ namespace TPLOCAL1.Controllers
         [HttpPost]
         public ActionResult ValidationFormulaire(FormModel formModel)
         {
-            Console.WriteLine(formModel.StartDate);
-            //TODO : test if model's fields are set
-            //if not, display an error message and stay on the form page
-            //else, call ValidationForm with the datas set by the user
+            //Manage errors of format
+            if (formModel.Sexe.Equals(FormModel.Sexes.First()))
+            {
+                ModelState.AddModelError("Sexe", "Selectionnez un genre");
+            }
+
+            if (formModel.StartDate > DateTime.Parse("01/01/2021"))
+            {
+                ModelState.AddModelError("StartDate", "La doit commencer avant le 01/01/2021");
+            }
+
+            //Manage errors of format - depends on the Training Selected
+            if (formModel.TrainingType.Equals(FormModel.Trainings.First()))
+            {
+                ModelState.AddModelError("TrainingType", "Selectionnez une formation");
+            }
+            else if (formModel.TrainingType.Equals(FormModel.Trainings.ElementAt(1)) && formModel.CobolTraining == null)
+            {
+                ModelState.AddModelError("CobolTraining", "Vous avez choisi la formation Cobol : Donnez un avis pour cette formation");
+            }
+            else if (formModel.TrainingType.Equals(FormModel.Trainings.ElementAt(2)) && formModel.CSTraining == null)
+            {
+                ModelState.AddModelError("CSTraining", "Vous avez choisi la formation Cobol : Donnez un avis pour cette formation");
+            }
+            else if (formModel.TrainingType.Equals(FormModel.Trainings.ElementAt(3)) && (formModel.CobolTraining == null || formModel.CSTraining == null))
+            {
+                ModelState.AddModelError("CobolTraining", "Donnez un avis pour les deux formations.");
+            }
+
+
+            //Check if model has errors to return the proper view
             if (!ModelState.IsValid)
             {
                 return View("Form", formModel);
-
             }
-            return View("ValidationFormulaire", formModel);
+
+
+            return View(nameof(ValidationFormulaire), formModel);
+         
         }
-
-
     }
 }
