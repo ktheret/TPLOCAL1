@@ -46,10 +46,10 @@ namespace TPLOCAL1.Controllers
         [HttpPost]
         public ActionResult ValidationFormulaire(FormModel formModel)
         {
-            //Manage errors of format
+            //Check if selected value doesn't correspond to first value of Sexes List
             if (formModel.Sexe.Equals(FormModel.Sexes.First()))
             {
-                ModelState.AddModelError("Sexe", "Selectionnez un genre");
+                ModelState.AddModelError("Sexe", "Sélectionnez un genre");
             }
 
             if (formModel.StartDate > DateTime.Parse("01/01/2021"))
@@ -60,7 +60,7 @@ namespace TPLOCAL1.Controllers
             //Manage errors of format - depends on the Training Selected
             if (formModel.TrainingType.Equals(FormModel.Trainings.First()))
             {
-                ModelState.AddModelError("TrainingType", "Selectionnez une formation");
+                ModelState.AddModelError("TrainingType", "Sélectionnez une formation");
             }
             else if (formModel.TrainingType.Equals(FormModel.Trainings.ElementAt(1)) && formModel.CobolTraining == null)
             {
@@ -75,13 +75,11 @@ namespace TPLOCAL1.Controllers
                 ModelState.AddModelError("CobolTraining", "Donnez un avis pour les deux formations.");
             }
 
-
             //Check if model has errors to return the proper view
             if (!ModelState.IsValid)
             {
                 return View("Form", formModel);
             }
-
 
             return View(nameof(ValidationFormulaire), formModel);
          
